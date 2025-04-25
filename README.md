@@ -44,6 +44,7 @@ CREATE TABLE netflix (
     listed_in    VARCHAR(250),
     description  VARCHAR(550)
 );
+```
 
 Here’s a quick reference to all the SQL-powered questions tackled in this project:
 
@@ -57,6 +58,7 @@ SELECT
 	COUNT(*) as total_count
 FROM netflix
 GROUP BY type
+```
 
 ### 2. 🍿 What’s the most common rating for each content type?
 ```sql
@@ -81,6 +83,7 @@ SELECT
     rating AS most_frequent_rating
 FROM RankedRatings
 WHERE rank = 1
+```
 
 ### 3. 🍿 Which movies were released in a specific year (e.g., 2020)?
 ```sql
@@ -105,6 +108,7 @@ FROM
 WHERE country IS NOT NULL
 ORDER BY total_content DESC
 LIMIT 5
+```
 
 ### 5. 🍿 What is the longest movie on Netflix?
 ```sql
@@ -113,6 +117,7 @@ SELECT
 FROM netflix
 WHERE type = 'Movie'
 ORDER BY SPLIT_PART(duration, ' ', 1)::INT DESC
+```
 
 ### 6. 🍿 What content was added in the last 5 years?
 ```sql
@@ -135,6 +140,7 @@ netflix
 )
 WHERE 
 	director_name = 'Rajiv Chilaka'
+```
 
 ### 8. 🍿 Which TV shows have more than 5 seasons?
 ```sql
@@ -144,6 +150,7 @@ WHERE
 	TYPE = 'TV Show'
 	AND
 	SPLIT_PART(duration, ' ', 1)::INT > 5
+```
 
 ### 9. 🍿 What is the count of content by genre?
 ```sql
@@ -152,6 +159,7 @@ SELECT
 	COUNT(*) as total_content
 FROM netflix
 GROUP BY 1
+```
 
 ### 10. 🍿 Which 5 years had the highest % of content released in India?
 ```sql
@@ -170,17 +178,20 @@ WHERE country = 'India'
 GROUP BY country, 2
 ORDER BY avg_release DESC 
 LIMIT 5
+```
 
 ### 11. 🍿 Which Netflix titles are Documentaries?
 ```sql
 SELECT * FROM netflix
 WHERE listed_in LIKE '%Documentaries'
+```
 
 ### 12. 🍿 What content has no director listed?
 ```sql
 SELECT*FROM netflix
 WHERE 
 	director IS NULL
+```
 
 ### 13. 🍿 How many Salman Khan movies came out in the last 10 years?
 ```sql
@@ -189,6 +200,7 @@ WHERE
 	casts LIKE '%Salman Khan%'
 	AND 
 	release_year > EXTRACT(YEAR FROM CURRENT_DATE) - 10
+```
 
 ### 14. 🍿 Who are the top 10 actors in Indian-produced Netflix content?
 ```sql
@@ -200,6 +212,7 @@ WHERE country = 'India'
 GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 10
+```
 
 ### 15. 🍿 How much content contains the keywords “kill” or “violence”?
 ```sql
@@ -218,6 +231,7 @@ FROM (
 ) AS categorized_content
 GROUP BY 1,2
 ORDER BY 2
+```
 
 ---
 
