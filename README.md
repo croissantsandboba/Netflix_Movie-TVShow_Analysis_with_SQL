@@ -17,14 +17,10 @@ Here’s what we set out to explore:
 
 Basically, we’re turning Netflix’s database into an interactive story powered by SQL.
 
---
-
 ## 📦 Dataset
 
 Straight from Kaggle’s data vault:  
 **[Netflix Movies and TV Shows Dataset](https://www.kaggle.com/datasets/shivamb/netflix-shows?resource=download)**
-
----
 
 ## 🛠️ Database Schema
 
@@ -47,9 +43,6 @@ CREATE TABLE netflix (
 ```
 
 Here’s a quick reference to all the SQL-powered questions tackled in this project:
-
----
-
 
 ### 1. 🍿 What’s the count of Movies vs TV Shows on Netflix?
 ```sql
@@ -232,8 +225,6 @@ FROM (
 GROUP BY 1,2
 ORDER BY 2
 ```
-
----
 
 ## 🧠 Key Takeaways
 
