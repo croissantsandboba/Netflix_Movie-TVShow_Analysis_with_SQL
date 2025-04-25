@@ -1,1 +1,1 @@
-# Netflix_Movie-TVShow_Analysis_with_SQL
+# Netflix_Movie_TVShow_Analysis_with_SQL
