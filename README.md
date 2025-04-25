@@ -52,7 +52,6 @@ Here’s a quick reference to all the SQL-powered questions tackled in this proj
 
 ### 1. 🍿 What’s the count of Movies vs TV Shows on Netflix?
 ```sql
-
 SELECT
 	type,
 	COUNT(*) as total_count
@@ -61,7 +60,6 @@ GROUP BY type
 
 ### 2. 🍿 What’s the most common rating for each content type?
 ```sql
-
 WITH RatingCounts AS (
     SELECT 
         type,
@@ -86,7 +84,6 @@ WHERE rank = 1
 
 ### 3. 🍿 Which movies were released in a specific year (e.g., 2020)?
 ```sql
-
 SELECT*FROM netflix
 WHERE 
 	type = 'Movie'
@@ -95,7 +92,6 @@ WHERE
 
 ### 4. 🍿 Which top 5 countries have the most Netflix content?
 ```sql
-
 SELECT * 
 FROM
 (
@@ -112,7 +108,6 @@ LIMIT 5
 
 ### 5. 🍿 What is the longest movie on Netflix?
 ```sql
-
 SELECT 
 	*
 FROM netflix
@@ -121,7 +116,6 @@ ORDER BY SPLIT_PART(duration, ' ', 1)::INT DESC
 
 ### 6. 🍿 What content was added in the last 5 years?
 ```sql
-
 SELECT
 *
 FROM netflix
@@ -129,7 +123,6 @@ WHERE TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years'
 
 ### 7. 🍿 What content was directed by Rajiv Chilaka?
 ```sql
-
 SELECT *
 FROM
 (
@@ -145,7 +138,6 @@ WHERE
 
 ### 8. 🍿 Which TV shows have more than 5 seasons?
 ```sql
-
 SELECT *
 FROM netflix
 WHERE 
@@ -155,7 +147,6 @@ WHERE
 
 ### 9. 🍿 What is the count of content by genre?
 ```sql
-
 SELECT 
 	UNNEST(STRING_TO_ARRAY(listed_in, ',')) as genre,
 	COUNT(*) as total_content
@@ -164,7 +155,6 @@ GROUP BY 1
 
 ### 10. 🍿 Which 5 years had the highest % of content released in India?
 ```sql
-
 SELECT 
 	country,
 	release_year,
@@ -183,20 +173,17 @@ LIMIT 5
 
 ### 11. 🍿 Which Netflix titles are Documentaries?
 ```sql
-
 SELECT * FROM netflix
 WHERE listed_in LIKE '%Documentaries'
 
 ### 12. 🍿 What content has no director listed?
 ```sql
-
 SELECT*FROM netflix
 WHERE 
 	director IS NULL
 
 ### 13. 🍿 How many Salman Khan movies came out in the last 10 years?
 ```sql
-
 SELECT * FROM netflix
 WHERE 
 	casts LIKE '%Salman Khan%'
@@ -205,7 +192,6 @@ WHERE
 
 ### 14. 🍿 Who are the top 10 actors in Indian-produced Netflix content?
 ```sql
-
 SELECT 
 	UNNEST(STRING_TO_ARRAY(casts, ',')) as actor,
 	COUNT(*)
@@ -217,7 +203,6 @@ LIMIT 10
 
 ### 15. 🍿 How much content contains the keywords “kill” or “violence”?
 ```sql
-
 SELECT 
     category,
 	TYPE,
