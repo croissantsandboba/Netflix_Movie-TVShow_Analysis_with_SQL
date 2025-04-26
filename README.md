@@ -50,7 +50,7 @@ SELECT
 	type,
 	COUNT(*) as total_count
 FROM netflix
-GROUP BY type
+GROUP BY type;
 ```
 
 ### 2. 🍿 What’s the most common rating for each content type?
@@ -75,7 +75,7 @@ SELECT
     type,
     rating AS most_frequent_rating
 FROM RankedRatings
-WHERE rank = 1
+WHERE rank = 1;
 ```
 
 ### 3. 🍿 Which movies were released in a specific year (e.g., 2020)?
@@ -100,7 +100,7 @@ FROM
 )as t1
 WHERE country IS NOT NULL
 ORDER BY total_content DESC
-LIMIT 5
+LIMIT 5;
 ```
 
 ### 5. 🍿 What is the longest movie on Netflix?
@@ -109,7 +109,7 @@ SELECT
 	*
 FROM netflix
 WHERE type = 'Movie'
-ORDER BY SPLIT_PART(duration, ' ', 1)::INT DESC
+ORDER BY SPLIT_PART(duration, ' ', 1)::INT DESC;
 ```
 
 ### 6. 🍿 What content was added in the last 5 years?
@@ -117,7 +117,7 @@ ORDER BY SPLIT_PART(duration, ' ', 1)::INT DESC
 SELECT
 *
 FROM netflix
-WHERE TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years'
+WHERE TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years';
 
 ### 7. 🍿 What content was directed by Rajiv Chilaka?
 ```sql
@@ -132,7 +132,7 @@ FROM
 netflix
 )
 WHERE 
-	director_name = 'Rajiv Chilaka'
+	director_name = 'Rajiv Chilaka';
 ```
 
 ### 8. 🍿 Which TV shows have more than 5 seasons?
@@ -142,7 +142,7 @@ FROM netflix
 WHERE 
 	TYPE = 'TV Show'
 	AND
-	SPLIT_PART(duration, ' ', 1)::INT > 5
+	SPLIT_PART(duration, ' ', 1)::INT > 5;
 ```
 
 ### 9. 🍿 What is the count of content by genre?
@@ -151,7 +151,7 @@ SELECT
 	UNNEST(STRING_TO_ARRAY(listed_in, ',')) as genre,
 	COUNT(*) as total_content
 FROM netflix
-GROUP BY 1
+GROUP BY 1;
 ```
 
 ### 10. 🍿 Which 5 years had the highest % of content released in India?
@@ -170,20 +170,20 @@ FROM netflix
 WHERE country = 'India' 
 GROUP BY country, 2
 ORDER BY avg_release DESC 
-LIMIT 5
+LIMIT 5;
 ```
 
 ### 11. 🍿 Which Netflix titles are Documentaries?
 ```sql
 SELECT * FROM netflix
-WHERE listed_in LIKE '%Documentaries'
+WHERE listed_in LIKE '%Documentaries';
 ```
 
 ### 12. 🍿 What content has no director listed?
 ```sql
 SELECT*FROM netflix
 WHERE 
-	director IS NULL
+	director IS NULL;
 ```
 
 ### 13. 🍿 How many Salman Khan movies came out in the last 10 years?
@@ -192,7 +192,7 @@ SELECT * FROM netflix
 WHERE 
 	casts LIKE '%Salman Khan%'
 	AND 
-	release_year > EXTRACT(YEAR FROM CURRENT_DATE) - 10
+	release_year > EXTRACT(YEAR FROM CURRENT_DATE) - 10;
 ```
 
 ### 14. 🍿 Who are the top 10 actors in Indian-produced Netflix content?
@@ -204,7 +204,7 @@ FROM netflix
 WHERE country = 'India'
 GROUP BY 1
 ORDER BY 2 DESC
-LIMIT 10
+LIMIT 10;
 ```
 
 ### 15. 🍿 How much content contains the keywords “kill” or “violence”?
@@ -223,7 +223,7 @@ FROM (
     FROM netflix
 ) AS categorized_content
 GROUP BY 1,2
-ORDER BY 2
+ORDER BY 2;
 ```
 
 ## 🧠 Key Takeaways
